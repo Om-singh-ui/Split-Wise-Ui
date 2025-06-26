@@ -4,13 +4,18 @@ import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Menu, X, Sparkles, ChevronDown } from "lucide-react";
+import { ArrowRight, Sparkles, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { FEATURES } from "@/lib/landing";
+import { FEATURES, STEPS } from "@/lib/landing";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion, AnimatePresence } from "framer-motion";
-import { STEPS } from "@/lib/landing";
+import { motion } from "framer-motion";
 import { Github, Instagram, Linkedin } from "lucide-react";
+
+// Testimonial images (make sure these exist in your public folder)
+import SanskarImg from "@/public/testimonials/sanskarr.png";
+import TarunImg from "@/public/testimonials/nunaa.png";
+import NakshatraImg from "@/public/testimonials/nakku.png";
+import LogoImg from "@/public/logos/logo.png";
 
 export default function Home() {
   const [animate, setAnimate] = useState(false);
@@ -24,26 +29,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-screen overflow-x-hidden bg-black">
-      {/* Enhanced Background */}
+      {/* Optimized Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
-      <div
-        className={`relative z-10 bg-gradient-to-b from-black via-gray-900/50 to-black transition-all duration-1000 ease-in-out ${
-          animate ? "fade-in" : ""
-        }`}
-      >
+      <div className={`relative z-10 bg-gradient-to-b from-black via-gray-900/50 to-black ${animate ? "opacity-100" : "opacity-0"} transition-opacity duration-1000`}>
         {/* Hero Section */}
-        <div className="pt-32 min-h-screen w-full flex items-center">
-          <section className="w-full">
-            <div
-              className={`text-center transition-all duration-1000 ${
-                animate ? "scale-100 opacity-100" : "scale-95 opacity-0"
-              }`}
-            >
+        <section className="pt-32 min-h-screen w-full flex items-center">
+          <div className="w-full">
+            <div className={`text-center transition-all duration-1000 ${animate ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -52,19 +49,13 @@ export default function Home() {
               >
                 <Badge
                   variant="outline"
-                  className={`rounded-full border border-emerald-500/50 bg-emerald-500/10 backdrop-blur-sm px-6 py-3 text-base font-medium text-emerald-400 transition-all duration-500 hover:shadow-[0_8px_25px_rgba(16,185,129,0.4)] hover:bg-emerald-500/20 hover:border-emerald-400 hover:scale-105 ${
-                    animate ? "shadow-lg" : ""
-                  }`}
+                  className="rounded-full border border-emerald-500/50 bg-emerald-500/10 backdrop-blur-sm px-6 py-3 text-base font-medium text-emerald-400 transition-all duration-500 hover:shadow-[0_8px_25px_rgba(16,185,129,0.4)] hover:bg-emerald-500/20 hover:border-emerald-400 hover:scale-105 shadow-lg"
                 >
                   <Sparkles className="w-4 h-4 mr-2" />
                   Split smarter. Settle faster.
                 </Badge>
 
-                <div
-                  className={`mt-8 text-center leading-tight transform transition-all duration-1000 ${
-                    animate ? "glow-h1 scale-105" : "scale-95 opacity-0"
-                  }`}
-                >
+                <div className={`mt-8 text-center leading-tight ${animate ? "scale-105" : "scale-95 opacity-0"} transition-all duration-1000`}>
                   <h1 className="text-6xl md:text-8xl lg:text-9xl font-black bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 text-transparent bg-clip-text drop-shadow-2xl leading-tight">
                     Split-Wise-Ui
                   </h1>
@@ -93,10 +84,7 @@ export default function Home() {
                       size="lg"
                       className="px-10 py-4 text-lg font-semibold bg-gradient-to-r from-emerald-500 to-teal-500 text-white transition-all duration-500 hover:from-emerald-600 hover:to-teal-600 hover:shadow-[0_20px_40px_rgba(16,185,129,0.4)] hover:scale-110 group"
                     >
-                      <Link
-                        href="/dashboard"
-                        className="inline-flex items-center"
-                      >
+                      <Link href="/dashboard" className="inline-flex items-center">
                         Get Started Free
                         <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                       </Link>
@@ -107,10 +95,7 @@ export default function Home() {
                       size="lg"
                       className="px-10 py-4 text-lg font-semibold border-2 border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-300 hover:border-emerald-400 transition-all duration-500 hover:scale-105 backdrop-blur-sm"
                     >
-                      <Link
-                        href="#features"
-                        className="inline-flex items-center"
-                      >
+                      <Link href="#features" className="inline-flex items-center">
                         See How It Works
                         <ChevronDown className="ml-2 h-5 w-5" />
                       </Link>
@@ -119,33 +104,10 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
 
-        {/* Enhanced Animations */}
-        <style jsx>{`
-          .fade-in {
-            animation: fadeInUp 1s ease-out forwards;
-          }
-          .glow-h1 {
-            text-shadow:
-              0 0 40px rgba(16, 185, 129, 0.6),
-              0 0 80px rgba(20, 184, 166, 0.4),
-              0 0 120px rgba(16, 185, 129, 0.2);
-          }
-          @keyframes fadeInUp {
-            0% {
-              opacity: 0;
-              transform: translateY(40px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}</style>
-
-        {/* Enhanced Features Section */}
+        {/* Features Section */}
         <section id="features" className="py-32 w-full relative">
           <div className="w-full max-w-7xl mx-auto px-4 md:px-6 text-center">
             <motion.div
@@ -198,7 +160,7 @@ export default function Home() {
                     <Card
                       className={`group border-gray-800/50 bg-gray-900/30 backdrop-blur-xl shadow-xl hover:scale-[1.05] transition-all duration-500 ease-out hover:bg-gray-800/50 hover:border-emerald-500/30 ${shadowClass} relative overflow-hidden`}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       <CardContent className="p-8 relative z-10">
                         <div
                           className={`rounded-2xl p-5 inline-flex items-center justify-center transition-all duration-500 ${bg} ${color} ${iconShadowClass} group-hover:scale-125 group-hover:rotate-3`}
@@ -220,7 +182,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Enhanced How It Works Section */}
+        {/* How It Works Section */}
         <section id="how-it-works" className="py-32 w-full bg-gray-950/50">
           <div className="w-full max-w-7xl mx-auto px-4 md:px-6 text-center">
             <motion.div
@@ -254,7 +216,7 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: idx * 0.2 }}
                 >
                   <Card className="group border-gray-800/50 bg-gray-900/30 backdrop-blur-xl shadow-xl hover:scale-[1.05] transition-all duration-500 ease-out hover:bg-gray-800/50 hover:border-emerald-500/30 hover:shadow-[0_8px_40px_rgba(16,185,129,0.3)] relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <CardContent className="p-8 relative z-10">
                       <div className="relative mb-6">
                         <div className="rounded-2xl p-5 inline-flex items-center justify-center bg-emerald-500/20 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 group-hover:scale-125 group-hover:rotate-3 shadow-lg">
@@ -278,7 +240,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Enhanced Testimonials Section */}
+        {/* Testimonials Section */}
         <section id="testimonials" className="py-32 w-full">
           <div className="w-full max-w-7xl mx-auto px-4 md:px-6 text-center">
             <motion.div
@@ -307,29 +269,23 @@ export default function Home() {
                 {
                   name: "Sanskar Kushwah",
                   role: "Student at Meme Wallha",
-                  image: "/testimonials/sanskarr.png",
-                  quote:
-                    "My roommates and I used to argue over who paid what. Split-Wise-UI made things super simple. Now we track rent, groceries, and even random coffee runs—all in one place. Huge time saver!",
-                  instagram:
-                    "https://www.instagram.com/sanskar_kush07?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                  image: SanskarImg,
+                  quote: "My roommates and I used to argue over who paid what. Split-Wise-UI made things super simple. Now we track rent, groceries, and even random coffee runs—all in one place. Huge time saver!",
+                  instagram: "https://www.instagram.com/sanskar_kush07",
                 },
                 {
                   name: "Tarun Kushwah",
                   role: "UI/UX Designer",
-                  image: "/testimonials/nunaa.png",
-                  quote:
-                    "Split-Wise-UI completely changed how our team handles shared subscriptions and reimbursements. The interface is clean, fast, and intuitive—no more messy spreadsheets or awkward reminders. I use it weekly!",
-                  instagram:
-                    "https://www.instagram.com/tarun_kushwah17?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                  image: TarunImg,
+                  quote: "Split-Wise-UI completely changed how our team handles shared subscriptions and reimbursements. The interface is clean, fast, and intuitive—no more messy spreadsheets or awkward reminders. I use it weekly!",
+                  instagram: "https://www.instagram.com/tarun_kushwah17",
                 },
                 {
                   name: "Nakshatra Kanojiya",
                   role: "Freelancer & Travel Enthusiast",
-                  image: "/testimonials/nakku.png",
-                  quote:
-                    "Split-Wise-UI has streamlined how we manage group travel expenses. It ensures accuracy, fairness, and a seamless experience even when dealing with multiple currencies.",
-                  instagram:
-                    "https://www.instagram.com/__.nakshatra.__07?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                  image: NakshatraImg,
+                  quote: "Split-Wise-UI has streamlined how we manage group travel expenses. It ensures accuracy, fairness, and a seamless experience even when dealing with multiple currencies.",
+                  instagram: "https://www.instagram.com/__.nakshatra.__07",
                 },
               ].map(({ name, role, image, quote, instagram }, idx) => (
                 <motion.div
@@ -340,19 +296,20 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
                 >
                   <Card className="group border-gray-800/50 bg-gray-900/30 backdrop-blur-xl shadow-xl hover:scale-[1.05] hover:shadow-[0_12px_50px_rgba(34,197,94,0.4)] transition-all duration-500 ease-out hover:bg-gray-800/50 hover:border-emerald-500/30 relative overflow-hidden h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <CardContent className="p-8 flex flex-col items-center text-center h-full relative z-10">
                       <div className="w-24 h-24 mb-6 rounded-full overflow-hidden border-4 border-emerald-500/30 group-hover:border-emerald-400 transition-all duration-500 group-hover:scale-110 shadow-lg">
                         <Image
-                          src={image || "/placeholder.svg"}
+                          src={image}
+                          alt={name}
                           width={96}
                           height={96}
-                          alt={name}
                           className="w-full h-full object-cover"
+                          placeholder="blur"
                         />
                       </div>
                       <p className="text-gray-300 text-base italic group-hover:text-white transition-colors duration-300 leading-relaxed flex-grow">
-                        "{quote}"
+                        &quot;{quote}&quot;
                       </p>
                       <div className="mt-6 pt-4 border-t border-gray-800 group-hover:border-emerald-500/30 transition-colors duration-300">
                         <a
@@ -373,11 +330,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Enhanced CTA Section */}
+        {/* CTA Section */}
         <section className="relative w-full bg-gradient-to-br from-emerald-600 via-teal-500 to-green-400 py-32 text-white overflow-hidden">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl opacity-40 animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-2xl opacity-30 animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/5 rounded-full blur-3xl opacity-20 animate-pulse delay-2000"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl opacity-40 animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-2xl opacity-30 animate-pulse delay-1000" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-white/5 rounded-full blur-3xl opacity-20 animate-pulse delay-2000" />
 
           <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
             <motion.div
@@ -390,7 +347,7 @@ export default function Home() {
                 Ready to simplify expense sharing?
               </h2>
               <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Join thousands of smart users who've made group expense
+                Join thousands of smart users who&apos;ve made group expense
                 management simple and stress-free with Split-Wise-UI
                 Professional.
               </p>
@@ -409,19 +366,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Enhanced Footer */}
+        {/* Footer */}
         <footer className="bg-gray-950 border-t border-gray-800/50 py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
               <div className="col-span-1 md:col-span-2">
                 <div className="flex items-center space-x-3 mb-6">
                   <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl flex items-center justify-center shadow-lg">
-                    <div className="w-10  h-10  rounded-b-none flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                    <div className="w-10 h-10 rounded-b-none flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                       <Image
-                        src="/logos/logo.png"
+                        src={LogoImg}
                         alt="Split-Wise Logo"
-                        width={24}
-                        height={24}
+                        width={40}
+                        height={40}
                         className="w-11 h-11 object-contain"
                       />
                     </div>
@@ -475,50 +432,42 @@ export default function Home() {
               <div>
                 <h3 className="text-lg font-bold text-white mb-6">Product</h3>
                 <ul className="space-y-4">
-                  {["Features", "How it works", "Security", "API"].map(
-                    (item) => {
-                      // Define scroll targets
-                      const linkMap = {
-                        Features: "#features",
-                        "How it works": "#how-it-works",
-                        Security: "/sign-in",
-                      };
-
-                      return (
-                        <li key={item}>
-                          <a
-                            href={linkMap[item] || "#"}
-                            className="text-gray-400 hover:text-emerald-400 transition-colors duration-300"
-                          >
-                            {item}
-                          </a>
-                        </li>
-                      );
-                    }
-                  )}
+                  {["Features", "How it works", "Security", "API"].map((item) => (
+                    <li key={item}>
+                      <Link
+                        href={
+                          item === "Features" 
+                            ? "#features" 
+                            : item === "How it works" 
+                              ? "#how-it-works" 
+                              : "#"
+                        }
+                        className="text-gray-400 hover:text-emerald-400 transition-colors duration-300"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
               <div>
                 <h3 className="text-lg font-bold text-white mb-6">Company</h3>
                 <ul className="space-y-4">
-                  {["Testimonials", "Sign-up"].map((item) => {
-                    const linkMap = {
-                      Testimonials: "#testimonials",
-                      signUp:"/sign-Up"
-                    };
-
-                    return (
-                      <li key={item}>
-                        <a
-                          href={linkMap[item] || "#"}
-                          className="text-gray-400 hover:text-emerald-400 transition-colors duration-300"
-                        >
-                          {item}
-                        </a>
-                      </li>
-                    );
-                  })}
+                  {["Testimonials", "Sign-up"].map((item) => (
+                    <li key={item}>
+                      <Link
+                        href={
+                          item === "Testimonials" 
+                            ? "#testimonials" 
+                            : "/sign-up"
+                        }
+                        className="text-gray-400 hover:text-emerald-400 transition-colors duration-300"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -549,3 +498,4 @@ export default function Home() {
     </div>
   );
 }
+
