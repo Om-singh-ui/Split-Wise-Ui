@@ -15,6 +15,8 @@ import { ExpenseList } from "@/components/expense-list";
 import { SettlementList } from "@/components/settelment-list";
 import { motion } from "framer-motion";
 
+import Chatbot from "@/components/chatbot";
+
 export default function PersonExpensesPage() {
   const params = useParams();
   const router = useRouter();
@@ -110,6 +112,7 @@ export default function PersonExpensesPage() {
             </div>
           </motion.div>
         </div>
+<Chatbot />
 
         {/* Balance card */}
         <motion.div

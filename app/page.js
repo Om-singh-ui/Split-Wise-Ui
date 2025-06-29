@@ -16,6 +16,7 @@ import SanskarImg from "@/public/testimonials/sanskarr.png";
 import TarunImg from "@/public/testimonials/nunaa.png";
 import NakshatraImg from "@/public/testimonials/nakku.png";
 import LogoImg from "@/public/logos/logo.png";
+import Chatbot from "@/components/chatbot";
 
 export default function Home() {
   const [animate, setAnimate] = useState(false);
@@ -35,6 +36,7 @@ export default function Home() {
         <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
+      <Chatbot />
 
       <div className={`relative z-10 bg-gradient-to-b from-black via-gray-900/50 to-black ${animate ? "opacity-100" : "opacity-0"} transition-opacity duration-1000`}>
         {/* Hero Section */}
@@ -54,6 +56,7 @@ export default function Home() {
                   <Sparkles className="w-4 h-4 mr-2" />
                   Split smarter. Settle faster.
                 </Badge>
+                
 
                 <div className={`mt-8 text-center leading-tight ${animate ? "scale-105" : "scale-95 opacity-0"} transition-all duration-1000`}>
                   <h1 className="text-6xl md:text-8xl lg:text-9xl font-black bg-gradient-to-r from-emerald-400 via-teal-400 to-green-400 text-transparent bg-clip-text drop-shadow-2xl leading-tight">

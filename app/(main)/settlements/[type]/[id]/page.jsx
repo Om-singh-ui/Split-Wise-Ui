@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Users, Handshake } from "lucide-react";
 import SettlementForm from "./components/settlement-form";
+import Chatbot from "@/components/chatbot";
 
 export default function SettlementPage() {
   const params = useParams();
@@ -80,7 +81,8 @@ export default function SettlementPage() {
               </Button>
             </div>
           </div>
-          
+          <Chatbot />
+
           {/* Decorative line */}
           <div className="w-full mt-4 flex justify-center">
             <div className="h-px w-32 bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>

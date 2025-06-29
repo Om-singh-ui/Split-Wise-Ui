@@ -12,6 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Plus, Users, User, Search, ArrowLeft } from "lucide-react";
 import { CreateGroupModal } from "./_components/create-group-modal";
+import Chatbot from "@/components/chatbot";
 
 export default function ContactsPage() {
   const [isCreateGroupModalOpen, setIsCreateGroupModalOpen] = useState(false);
@@ -85,7 +86,8 @@ export default function ContactsPage() {
               {users.length} people • {groups.length} groups
             </p>
           </div>
-          
+          <Chatbot />
+
           <Button 
             onClick={() => setIsCreateGroupModalOpen(true)}
             className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg shadow-indigo-500/20"

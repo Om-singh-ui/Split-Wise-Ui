@@ -45,6 +45,7 @@ import { GroupList } from "./components/group-list";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import Chatbot from "@/components/chatbot";
 
 // Format INR currency
 const formatINR = (amount) =>
@@ -326,6 +327,7 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
+            <Chatbot />
 
             {/* Header Actions */}
             <div className="flex items-center space-x-3">
@@ -506,8 +508,7 @@ export default function Dashboard() {
                               Expense Analytics
                             </CardTitle>
                           </div>
-                          <div className="flex items-center space-x-2">
-                          </div>
+                          <div className="flex items-center space-x-2"></div>
                         </div>
                       </CardHeader>
                       <CardContent className="p-7">

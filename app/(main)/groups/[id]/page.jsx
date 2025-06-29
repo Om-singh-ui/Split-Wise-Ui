@@ -14,6 +14,7 @@ import { ExpenseList } from "@/components/expense-list";
 import { SettlementList } from "@/components/settelment-list";
 import { GroupBalances } from "@/components/group-balances";
 import { GroupMembers } from "@/components/group-members";
+import Chatbot from "@/components/chatbot";
 
 // Format INR currency
 const formatINR = (amount) =>
@@ -77,7 +78,8 @@ export default function GroupExpensesPage() {
               </div>
             </div>
           </div>
-          
+          <Chatbot />
+
           <div className="flex flex-wrap gap-2">
             <Button 
               asChild 

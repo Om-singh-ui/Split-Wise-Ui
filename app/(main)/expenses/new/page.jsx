@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { ExpenseForm } from "./components/expense-form";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Chatbot from "@/components/chatbot";
 
 export default function NewExpensePage() {
   const router = useRouter();
@@ -20,6 +21,7 @@ export default function NewExpensePage() {
             Track and split expenses with friends or groups
           </p>
         </div>
+        <Chatbot />
 
         {/* Card with more pronounced styling */}
         <Card className="shadow-xl border-0 rounded-2xl overflow-hidden bg-white/90 backdrop-blur-sm">
